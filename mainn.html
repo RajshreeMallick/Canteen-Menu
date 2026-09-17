@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <span>🍴</span>
+            <h1>Campus Canteen</h1>
+        </div>
+
+        <div class="header-actions">
+            <button class="cart-btn">🛒 Cart <span id="cart-count">0</span></button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <p class="subtitle">Fresh • Tasty • Affordable</p>
+                <h2>Today's Canteen Menu</h2>
+                <p>Choose your favourite food and enjoy your meal!</p>
+            </div>
+        </section>
+
+        <section class="menu-section">
+
+            <div class="menu-top">
+                <h2>Menu</h2>
+
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search food..."
+                    >
+                    🔍
+                </div>
+            </div>
+
+            <div class="categories">
+                <button class="category active">All</button>
+                <button class="category">Breakfast</button>
+                <button class="category">Lunch</button>
+                <button class="category">Snacks</button>
+                <button class="category">Beverages</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+
+                <div class="food-card" data-category="Breakfast">
+                    <div class="food-image">🥪</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Veg Sandwich</h3>
+                        <p>Fresh vegetables with cheese and tasty sauce.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹50</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Breakfast">
+                    <div class="food-image">🍳</div>
+                    <div class="food-info">
+                        <span class="tag nonveg">NON-VEG</span>
+                        <h3>Egg Sandwich</h3>
+                        <p>Egg, vegetables and sauce served in fresh bread.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹60</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Lunch">
+                    <div class="food-image">🍛</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Veg Thali</h3>
+                        <p>Rice, dal, vegetables, chapati and salad.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹90</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Lunch">
+                    <div class="food-image">🍚</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Veg Fried Rice</h3>
+                        <p>Fried rice prepared with fresh vegetables.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹80</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Snacks">
+                    <div class="food-image">🍔</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Veg Burger</h3>
+                        <p>Crispy veg patty with fresh vegetables and sauce.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹70</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Snacks">
+                    <div class="food-image">🍟</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>French Fries</h3>
+                        <p>Crispy golden fries served with tomato ketchup.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹50</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Beverages">
+                    <div class="food-image">☕</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Masala Tea</h3>
+                        <p>Hot Indian tea prepared with aromatic spices.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹20</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card" data-category="Beverages">
+                    <div class="food-image">🥤</div>
+                    <div class="food-info">
+                        <span class="tag veg">VEG</span>
+                        <h3>Cold Coffee</h3>
+                        <p>Chilled creamy coffee served with ice.</p>
+
+                        <div class="food-bottom">
+                            <strong>₹60</strong>
+                            <button class="add-btn">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="no-results" id="noResults">
+                No food items found.
+            </p>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Campus Canteen. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const cards = document.querySelectorAll(".food-card");
+        const categories = document.querySelectorAll(".category");
+        const noResults = document.getElementById("noResults");
+        const cartCount = document.getElementById("cart-count");
+
+        let cart = 0;
+        let selectedCategory = "All";
+
+        function filterMenu() {
+            const searchText = searchInput.value.toLowerCase();
+            let visibleCards = 0;
+
+            cards.forEach(card => {
+                const name = card.querySelector("h3").textContent.toLowerCase();
+                const category = card.dataset.category;
+
+                const matchesSearch = name.includes(searchText);
+                const matchesCategory =
+                    selectedCategory === "All" ||
+                    category === selectedCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = "block";
+                    visibleCards++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            noResults.style.display =
+                visibleCards === 0 ? "block" : "none";
+        }
+
+        searchInput.addEventListener("input", filterMenu);
+
+        categories.forEach(category => {
+            category.addEventListener("click", () => {
+                categories.forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+                category.classList.add("active");
+                selectedCategory = category.textContent;
+
+                filterMenu();
+            });
+        });
+
+        document.querySelectorAll(".add-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                cart++;
+                cartCount.textContent = cart;
+
+                button.textContent = "Added ✓";
+
+                setTimeout(() => {
+                    button.textContent = "Add +";
+                }, 1000);
+            });
+        });
+    </script>
+
+</body>
+</html>
